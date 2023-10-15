@@ -19,19 +19,25 @@
   function fnModify() {
 	$('#btn_modify').click(function() {
 		$('#gubun').empty();
-		$('#title').empty();
-		$('#content').empty();
+		$('#divTitle').empty();
+		$('#divContent').empty();
 		var gubun = '<label for="gubun">구분</label><select name="gubun" id="gubun"><option value="1" selected>일반</option><option value="2" >긴급</option></select>';
 		$('#gubun').append(gubun);
+		var modifyTitle = $('#title').text();
 		var title = '<label for="title">제목</label><input type="text" id="title" name="title" value="${notice.title}">';
-		$('#title').append(title);
-		var content = '<div><label for="content">내용</label></div><textarea rows="6" cols="22" id="content" name="content" >${notice.content}</textarea>';
-		$('#content').append(content);
+		$('#divTitle').append(title);
+		var modifyContent = $('#content').text();
+		var content = '<div><label for="content">내용</label></div><textarea rows="6" cols="22" id="content" name="content">${notice.content}</textarea>';
+		$('#divContent').append(content);
+		fnScondClick();
+  })
+}		   
+  function fnScondClick() {
+	
 		 $('#btn_modify').on("click", function() {
 			 $('#frm_detail').submit();
 		      })
-  })
-}		   
+}
   
   function fnDelete() {
 	  $('#btn_delete').click(function() {
@@ -69,8 +75,8 @@
   </c:choose>
     
    </div>
-  <div id="title">제목: ${notice.title} </div>
-  <div id="content">내용: ${notice.content} </div>
+  <div id="divTitle">제목: ${notice.title} </div>
+  <div id="divContent">내용: ${notice.content} </div>
   <hr>
   <div>
     <input type="hidden" name="noticeNo" value="${notice.noticeNo}"/>
