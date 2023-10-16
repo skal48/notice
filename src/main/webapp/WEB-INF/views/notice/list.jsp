@@ -35,16 +35,7 @@
 	    }
 	  }
 
-  function fnDeleteResult(){
-      var modifyResult = '${modifyResult}';
-      if(modifyResult !== ''){
-        if(modifyResult === '1'){
-          alert('공지사항이 수정되었습니다.');
-        } else {
-        alert('공지사항 수정이 실패했습니다.');
-        }
-      }
-    }
+  
 </script>
 </head>
 <body>

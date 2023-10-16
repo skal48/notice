@@ -52,7 +52,7 @@ public class NoticeController {
   public String modify(NoticeDto noticeDto, RedirectAttributes redirectAttributes) {
     int modifyResult = noticeService.modifyNotice(noticeDto);
     redirectAttributes.addFlashAttribute("modifyResult", modifyResult);
-    return "redirect:/notice/list.do";
+    return "redirect:/notice/detail.do?noticeNo="+noticeDto.getNoticeNo();
   }
   
   @RequestMapping(value="/notice/delete.do", method=RequestMethod.POST)
