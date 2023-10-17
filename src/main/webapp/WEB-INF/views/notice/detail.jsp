@@ -18,28 +18,36 @@
 	})
   
   function fnModify() {
+	  
 	$('#btn_modify').click(function() {
+		
 		$('#gubun').empty();
 		$('#divTitle').empty();
 		$('#divContent').empty();
-		var gubun = '<span>구분</span> <select name="gubun" id="gubun"><option value="2" selected>일반</option><option value="1" >긴급</option></select>';
+		var gubun = '<span>구분</span> <select name="gubun" id="gubun"><option value="2">일반</option><option value="1" >긴급</option></select>';
 		$('#gubun').append(gubun);
-		var modifyTitle = $('#title').text();
+		
 		var title = '<span>제목</span><input type="text" id="title" name="title" value="${notice.title}">';
 		$('#divTitle').append(title);
-		var modifyContent = $('#content').text();
+		
 		var content = '<div><span>내용</span></div><textarea rows="6" cols="22" id="content" name="content">${notice.content}</textarea>';
 		$('#divContent').append(content);
-		fnSecondClick();
-  })
-}		   
-  
-  function fnSecondClick() {
-	
-		 $('#btn_modify').on("click", function() {
-			 $('#frm_detail').submit();				 
-		 })
-		}
+		$('#div_btn_modify').empty();
+		var btn = '<button type="submit" id="secont_btn">수정완료</button>';
+		$('#div_btn_modify').append(btn);
+		//fnSecondClick();
+    })
+    
+  }		   
+    
+  //function fnSecondClick() {
+	//$('#div_btn_modify').	
+	  
+	  	
+		// $('#div_btn_modify').on("click", function() {
+		//	 $('#frm_detail').submit();				 
+		// })
+		//}
 		 
   function modifyAlert() {
 		 var modifyResult = '${modifyResult}';
@@ -77,26 +85,26 @@
   </div>
   <hr>
   <form method="post" id="frm_detail" action="${contextPath}/notice/modify.do">
-  <div id="gubun">구분: 
-  <c:choose>
-    <c:when test="${notice.gubun=='2'}">
-    일반
-    </c:when>
-    <c:otherwise>
-    긴급
-    </c:otherwise>
-  </c:choose>
-    
-   </div>
-  <div id="divTitle">제목: ${notice.title} </div>
-  <div id="divContent">내용: ${notice.content} </div>
-  <hr>
-  <div>
-    <input type="hidden" name="noticeNo" value="${notice.noticeNo}"/>
-	  <button type="button" id="btn_modify">수정</button>
-	  <button type="button" id="btn_delete">삭제</button>
-	  <button type="button" id="btn_list">목록</button>  
-  </div>
+    <div id="gubun">구분: 
+    <c:choose>
+      <c:when test="${notice.gubun=='2'}">
+      일반
+      </c:when>
+      <c:otherwise>
+      긴급
+      </c:otherwise>
+    </c:choose>
+      
+     </div>
+    <div id="divTitle">제목: ${notice.title} </div>
+    <div id="divContent">내용: ${notice.content} </div>
+    <hr>
+    <div>
+      <input type="hidden" name="noticeNo" value="${notice.noticeNo}"/>
+  	  <div id="div_btn_modify"><button type="button" id="btn_modify">수정</button></div>
+  	  <button type="button" id="btn_delete">삭제</button>
+  	  <button type="button" id="btn_list">목록</button>  
+    </div>
   </form>
 
 </body>
